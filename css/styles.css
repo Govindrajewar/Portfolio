@@ -206,7 +206,7 @@ img {
   }
 }
 
-.passport-photo{
+.passport-photo {
   height: 80%;
   width: 80%;
   object-fit: cover;
@@ -288,6 +288,7 @@ img {
 }
 .about__img {
   justify-self: center;
+  cursor: pointer;
 }
 .about__img img {
   width: 200px;
