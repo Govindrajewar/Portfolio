@@ -14,6 +14,20 @@
 
     <title>Govind Rajewar</title>
     <link rel="icon" type="image/png" href="./img/favicon.jpeg" />
+
+    <style>
+        .cursor {
+            font-weight: bold;
+            display: inline-block;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -48,9 +62,9 @@
         <!--===== HOME =====-->
         <section class="home bd-grid" id="home">
             <div class="home__data">
-                <h1 class="home__title">Hi,<br>I'm <span class="home__title-color">Govind Rajewar</span>,<br>A Software
-                    Engineer
-                </h1>
+                <h1 class="home__title">Hi,<br>I'm <span class="home__title-color" id="typing-text"></span><span
+                        class="cursor">|</span></h1>
+                <h1 class="home__title" style="margin-top: -50px;">A Software Developer</h1>
                 <a href="https://www.linkedin.com/in/govind-rajewar" target="_blank" class="button"><i
                         class="bx bxs-coffee"></i> Let's Connect</a>
             </div>
@@ -344,6 +358,35 @@
     </footer>
 
     <script src="./js/main.js"></script>
+    <script>
+        const textElement = document.getElementById("typing-text");
+        const cursorElement = document.querySelector(".cursor");
+        const text = "Govind Rajewar";
+        let index = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            if (!isDeleting && index <= text.length) {
+                textElement.innerHTML = text.substring(0, index);
+                index++;
+            } else if (isDeleting && index >= 0) {
+                textElement.innerHTML = text.substring(0, index);
+                index--;
+            }
+
+            if (index === text.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, 1000); // Pause before deleting
+            } else if (index === 0) {
+                isDeleting = false;
+                setTimeout(typeEffect, 500); // Pause before typing again
+            } else {
+                setTimeout(typeEffect, isDeleting ? 200 : 200); // Typing and deleting speed
+            }
+        }
+
+        typeEffect();
+    </script>
 </body>
 
 </html>
